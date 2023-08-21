@@ -1,0 +1,56 @@
+# Compiled Object files
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.a
+
+# Compiled executables
+*.exe
+
+# Compiled binaries
+/bin/
+/build/
+/out/
+
+# CMake build directory
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+CMakeVars.txt
+Makefile
+cmake_install.cmake
+
+# Visual Studio Code settings
+.vscode/
+
+# Compiled binaries for Windows
+*.dll
+*.lib
+
+# MacOS specific files
+.DS_Store
+
+# Compiled Python files
+__pycache__/
+
+# Ignore any logs or temporary files
+*.log
+*.tmp
+
+# Ignore user-specific project files
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore user-specific files
+*.swp
+*~
+
+# Ignore project dependencies
+/bin/
+/build/
+/out/
