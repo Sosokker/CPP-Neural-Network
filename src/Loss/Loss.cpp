@@ -1,39 +1,18 @@
-#include "Loss.hpp"
+#include <Eigen/Dense>
+#include <cmath>
 
-double Loss::regularization_loss() {
-    // Implementation
+double mse(const Eigen::VectorXd& y_true, const Eigen::VectorXd& y_pred) {
+    return (y_true - y_pred).squaredNorm() / y_true.size();
 }
 
-// Implement other member functions of Loss class
-
-double Loss_CategoricalCrossentropy::forward(const std::vector<double>& y_pred, const std::vector<double>& y_true) {
-    // Implementation
+Eigen::VectorXd mse_prime(const Eigen::VectorXd& y_true, const Eigen::VectorXd& y_pred) {
+    return 2.0 * (y_pred - y_true) / y_true.size();
 }
 
-void Loss_CategoricalCrossentropy::backward(std::vector<double>& dvalues, const std::vector<double>& y_true) {
-    // Implementation
+double binary_cross_entropy(const Eigen::VectorXd& y_true, const Eigen::VectorXd& y_pred) {
+    return -((y_true.array() * y_pred.array().log()) + ((1 - y_true.array()) * (1 - y_pred.array()).log())).mean();
 }
 
-double Loss_BinaryCrossentropy::forward(const std::vector<double>& y_pred, const std::vector<double>& y_true) {
-    // Implementation
-}
-
-void Loss_BinaryCrossentropy::backward(std::vector<double>& dvalues, const std::vector<double>& y_true) {
-    // Implementation
-}
-
-double Loss_MeanSquaredError::forward(const std::vector<double>& y_pred, const std::vector<double>& y_true) {
-    // Implementation
-}
-
-void Loss_MeanSquaredError::backward(std::vector<double>& dvalues, const std::vector<double>& y_true) {
-    // Implementation
-}
-
-double Loss_MeanAbsoluteError::forward(const std::vector<double>& y_pred, const std::vector<double>& y_true) {
-    // Implementation
-}
-
-void Loss_MeanAbsoluteError::backward(std::vector<double>& dvalues, const std::vector<double>& y_true) {
-    // Implementation
+Eigen::VectorXd binary_cross_entropy_prime(const Eigen::VectorXd& y_true, const Eigen::VectorXd& y_pred) {
+    return ((1 - y_true.array()) / (1 - y_pred.array()) - y_true.array() / y_pred.array()) / y_true.size();
 }
