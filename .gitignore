@@ -1,56 +1,66 @@
 # Compiled Object files
 *.o
+*.obj
 
 # Compiled Dynamic libraries
+*.dll
 *.so
 
 # Compiled Static libraries
+*.lib
 *.a
 
-# Compiled executables
+# Executables
 *.exe
 
-# Compiled binaries
-/bin/
-/build/
-/out/
-
 # CMake build directory
-CMakeFiles/
-CMakeCache.txt
-CMakeScripts/
-CMakeVars.txt
-Makefile
-cmake_install.cmake
+build/
 
-# Visual Studio Code settings
+# VSCode settings directory
 .vscode/
 
-# Compiled binaries for Windows
-*.dll
-*.lib
+# Compiled binary output
+bin/
 
-# MacOS specific files
+# Ignore any local user-specific configuration files
+.idea/
+*.iml
+
+# Ignore generated documentation
+doc/
+
+# Ignore generated files from your IDE or text editor
+*.swp
+*.swo
+*.swn
+
+# Ignore any temporary files or backups
+*~
+*.bak
+*.backup
+
+# Ignore macOS specific files
 .DS_Store
 
-# Compiled Python files
-__pycache__/
+# Ignore user-specific or sensitive information
+credentials.json
 
-# Ignore any logs or temporary files
-*.log
-*.tmp
-
-# Ignore user-specific project files
-.idea/
+# Ignore user-specific settings
 *.suo
 *.user
 *.sln.docstates
 
-# Ignore user-specific files
-*.swp
-*~
+# Ignore system-specific files
+Thumbs.db
 
-# Ignore project dependencies
-/bin/
-/build/
-/out/
+# Ignore build artifacts in the src/ directory
+src/**/*.o
+src/**/*.a
+src/**/*.so
+src/**/*.dll
+src/**/*.exe
+src/**/*.bin
+src/**/*.dSYM/
+
+# exclude eigen in include
+include/Eigen
