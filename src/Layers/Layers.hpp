@@ -1,51 +1,22 @@
-#pragma once
-#include <vector>
-#include <utility>
+#ifndef LAYERS_HPP
+#define LAYERS_HPP
+
+#include <Eigen/Dense>
 
 class Layer {
 public:
-    virtual void forward(const std::vector<double>& inputs, bool training) = 0;
-    virtual void backward(std::vector<double>& dvalues) = 0;
-    virtual std::pair<std::vector<std::vector<double>>, std::vector<std::vector<double>>> get_parameters() const = 0;
-    virtual void set_parameters(const std::vector<std::vector<double>>& weights, const std::vector<std::vector<double>>& biases) = 0;
+    Layer();
+
+    virtual void forward(const Eigen::VectorXd& input_data);
+    virtual void backward(const Eigen::VectorXd& output_gradient, double learning_rate);
+
+    const Eigen::VectorXd& getOutput() const;
+    const Eigen::VectorXd& getInputGradient() const;
+
+protected:
+    Eigen::VectorXd input;
+    Eigen::VectorXd output;
+    Eigen::VectorXd input_gradient;
 };
 
-class Layer_Dense : public Layer {
-private:
-    double weight_regularizer_l1, weight_regularizer_l2,
-        bias_regularizer_l1, bias_regularizer_l2;
-    std::vector<std::vector<double>> weights, biases;
-    std::vector<double> inputs;
-
-public:
-    Layer_Dense(int n_inputs, int n_neurons,
-                double weight_regularizer_l1,
-                double weight_regularizer_l2,
-                double bias_regularizer_l1,
-                double bias_regularizer_l2);
-
-    void forward(const std::vector<double>& inputs, bool training) override;
-    void backward(std::vector<double>& dvalues) override;
-    std::pair<std::vector<std::vector<double>>, std::vector<std::vector<double>>> get_parameters() const override;
-    void set_parameters(const std::vector<std::vector<double>>& weights, const std::vector<std::vector<double>>& biases) override;
-};
-
-class Layer_Dropout : public Layer {
-private:
-    double rate;
-
-public:
-    Layer_Dropout(double rate);
-
-    void forward(const std::vector<double>& inputs, bool training) override;
-    void backward(std::vector<double>& dvalues) override;
-};
-
-
-class Layer_Input {
-private:
-    std::vector<double> output;
-
-public:
-    void forward(const std::vector<double>& inputs, bool training);
-};
+#endif // LAYERS_HPP
