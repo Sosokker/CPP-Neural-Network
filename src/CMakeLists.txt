@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(include)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/Eigen)
+include_directories(${CMAKE_SOURCE_DIR}/include/Activation)
+include_directories(${CMAKE_SOURCE_DIR}/include/Layers)
 
 # Add source files to the project
 file(GLOB_RECURSE SOURCES "src/*.cpp")
