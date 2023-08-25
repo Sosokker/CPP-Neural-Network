@@ -1,4 +1,4 @@
-#include <Eigen/Dense>
+#include "../../include/Eigen/Dense"
 #include "Layers.hpp"
 
 class DenseLayer : public Layer {

@@ -1,7 +1,7 @@
 #ifndef LAYERS_HPP
 #define LAYERS_HPP
 
-#include <Eigen/Dense>
+#include "../../include/Eigen/Dense"
 
 class Layer {
 public:
