@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include <Eigen/Dense>
-#include <Layers/Layers.hpp>
+#include "../../include/Eigen/Dense"
+#include "../Layers/Layers.hpp"
 
 Eigen::VectorXd predict(const std::vector<Layer*>& network, const Eigen::VectorXd& input) {
     Eigen::VectorXd output = input;
