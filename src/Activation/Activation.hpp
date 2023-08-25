@@ -1,6 +1,6 @@
 #include <functional>
-#include <Eigen/Dense>
-#include <Layers/Layers.hpp>
+#include "../../include/Eigen/Dense"
+#include "../Layers/Layers.hpp"
 
 class Activation : public Layer {
 public:

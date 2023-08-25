@@ -1,7 +1,7 @@
 #include <cmath>
-#include <Layers/Layers.hpp>
+#include "../Layers/Layers.hpp"
 #include "Activation.hpp"
-#include <Eigen/Dense>
+#include "../../include/Eigen/Dense"
 
 class TanhActivation : public Activation {
 public:
