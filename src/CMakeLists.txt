@@ -1,3 +1,7 @@
+# Set the C and C++ compiler paths
+set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
+set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/g++.exe")
+
 cmake_minimum_required(VERSION 3.10)
 
 project(CPP-Neural-Network)
@@ -5,21 +9,33 @@ project(CPP-Neural-Network)
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
 
-# Set the directories for header files and source files
-include_directories(include)
-include_directories(${CMAKE_SOURCE_DIR}/include)
+# Add the Eigen library directory (assuming Eigen is in the project root)
 include_directories(${CMAKE_SOURCE_DIR}/Eigen)
-include_directories(${CMAKE_SOURCE_DIR}/include/Activation)
-include_directories(${CMAKE_SOURCE_DIR}/include/Layers)
 
-# Add source files to the project
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+include_directories(${CMAKE_SOURCE_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/src/Activation)
+include_directories(${CMAKE_SOURCE_DIR}/src/Loss)
+include_directories(${CMAKE_SOURCE_DIR}/src/Layers)
+include_directories(${CMAKE_SOURCE_DIR}/src/utils)
+
+set(SOURCES
+    main.cpp
+    Activation/ActivationFunc.cpp
+    Loss/Loss.cpp
+    Layers/DenseLayer.cpp
+    utils/utils.cpp
+    ../include/Activation/Activation.hpp
+    ../include/Layers/DenseLayer.hpp
+    ../include/Layers/layers.hpp
+    ../include/utils/utils.hpp
+    ../include/Eigen/Dense
+)
 
 # Create the executable
-add_executable(CPP-Neural-Network ${SOURCES})
+add_executable(NeuralNetwork ${SOURCES})
 
 # Link the Eigen library
-target_include_directories(CPP-Neural-Network PRIVATE ${CMAKE_SOURCE_DIR}/Eigen)
+target_include_directories(NeuralNetwork PRIVATE ${CMAKE_SOURCE_DIR}/Eigen)
 
 # Set the output directory for the executable
-set_target_properties(CPP-Neural-Network PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set_target_properties(NeuralNetwork PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
