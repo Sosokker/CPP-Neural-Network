@@ -1,7 +1,5 @@
 # CPP-Neural-Network
 
-`status` : Error on Linker when make.
-
 Build executable File and Run.
 ```cmd
 git clone https://github.com/Sosokker/CPP-Neural-Network
